@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Add Request {% endblock %}
+{% form_theme formContact 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    <div class="inner-banner">
+    </div>
+    <div class="w3-services py-5">
+        <div class="container py-lg-4">
+
+
+                    <div class="chat-body">
+                        <h6>Mini Chat</h6>
+
+                        <div class="answer-add">
+                            <input placeholder="Write a message" >
+                            <span class="answer-btn answer-btn-1"></span>
+                            <span class="answer-btn answer-btn-2"></span>
+                        </div>
+                    </div>
+
+
+
+            {{ form_start(formContact,{'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_widget(formContact) }}
+            {{ form_end(formContact) }}
+
+        </div>
+    </div>
+{% endblock %}

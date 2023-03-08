@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Update Project {{ id}} {% endblock %}
+{% block body %}
+    <div class="inner-banner">
+    </div>
+    <div class="w3-services py-5">
+        <div class="container py-lg-4">
+            {{ form(formProject) }}
+        </div>
+    </div>
+{% endblock %}

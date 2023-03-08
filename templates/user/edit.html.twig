@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="inner-banner"></div>
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_user_show',
+    {'id': user.id}
+) }}">
+        Back
+    </a>
+
+
+{% endblock %}

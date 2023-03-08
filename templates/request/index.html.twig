@@ -1,0 +1,89 @@
+
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Requests {% endblock %}
+
+{% block body %}
+    <div class="inner-banner">
+    </div>
+    <div class="w3-services py-5">
+        <div class="container py-lg-4">
+            <div class="row w3-services-grids">
+
+
+                    <h4 class="card-title">  Requests:</h4>
+
+
+                {% for t in Requests %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-white mb-5">
+
+
+
+                                    <div class="card-body">
+                                        <ul class="list-unstyled">
+                                            <li class="position-relative booking">
+                                                <div class="media">
+                                                    <div class="msg-img">
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-4">Request Type : {{ t.Rtype}}    <br> <span class="badge badge-primary mx-3">{{t.Status }}</span></h5>
+                                                        <div class="mb-3">
+                                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Sent on: </span>
+                                                            <span class="bg-light-blue">{{t.createdAt|date('d/m/Y')}}</span> <br>
+
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Sender id:</span>
+                                                            <span class="bg-light-blue">{{ t.Senderid}}</span>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Project id:</span>
+                                                            <span class="bg-light-blue">{{ t.Projectid}}</span>
+                                                        </div>
+
+                                                        <a class="badge badge-primary mx-3"  href="/request/remove/{{ t.id }}"> remove request</a>
+                                                        {% if t.Status=='APPROVED'%}
+                                                        <div>
+                                                        <a class="badge badge-primary mx-3" href="/contact/{{ t.id }}">   Chat now </a>
+                                                        </div>
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                                {% if t.Status=='PENDING'%}
+                                                <div class="buttons-to-right">
+
+                                                    <a  href="/request/update/{{ t.id }}/reject" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Reject</a>
+                                                    <a href="/request/update/{{ t.id }}/approve" class="btn-gray"><i class="far fa-check-circle mr-2"></i> Approve</a>
+                                                </div>
+                                                {% endif %}
+                                            </li>
+
+
+
+
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

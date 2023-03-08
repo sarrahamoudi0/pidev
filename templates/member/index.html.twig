@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Member index{% endblock %}
+
+{% block body %}
+    <div class='inner-banner'></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Department</th>
+                <th>Position</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>IsActive</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td>{{ member.username }}</td>
+                <td>{{ member.Department }}</td>
+                <td>{{ member.position }}</td>
+                <td>{{ member.createdAt ? member.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ member.updatedAt ? member.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ member.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_member_show', {'id': member.id}) }}" class="nav-link  btn btn-style">show</a>
+                    <a href="{{ path('app_member_edit', {'id': member.id}) }}" class="nav-link  btn btn-style">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_member_new',    {'id': app.user.id})
+}}" class="nav-link donate btn btn-style">Create new</a>
+{% endblock %}

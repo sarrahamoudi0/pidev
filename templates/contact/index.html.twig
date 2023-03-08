@@ -1,0 +1,112 @@
+
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello ContactController!{% endblock %}
+
+
+
+
+{% block body %}
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <div class="inner-banner"> </div>
+
+
+
+
+    <div class="container">
+        <div class="content container-fluid bootstrap snippets bootdey">
+            <div class="row row-broken">
+                <div class="col-sm-3 col-xs-12">
+                    <div class="col-inside-lg decor-default chat" style="overflow: scroll; outline: red ridge;" tabindex="5000">
+                        <div class="chat-users">
+                            <h6>Online</h6>
+                            <div class="user">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                                    <div class="status off"></div>
+                                </div>
+                                <div class="name">User name</div>
+                                <div class="mood">User mood</div>
+                            </div>
+
+                            <div class="user">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User name">
+                                    <div class="status offline"></div>
+                                </div>
+                                <div class="name">User name</div>
+                                <div class="mood">User mood</div>
+                            </div>
+                            <div class="user">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User name">
+                                    <div class="status off"></div>
+                                </div>
+                                <div class="name">User name</div>
+                                <div class="mood">User mood</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-xs-12 chat" style="overflow: scroll; outline: red ridge;" tabindex="5001">
+                    <div class="col-inside-lg decor-default">
+                        <div class="chat-body">
+                            <h6>Mini Chat</h6>
+
+
+                            {% for t in Contacts %}
+
+                            {% if t.Senderid == app.user.id %}
+                            <div class="answer right">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+
+                                    <div class="status online"> </div>
+                                </div>
+                                <div class="name">{{ t.Senderid }}</div>
+
+                                <div class="text">
+                                    {{ t.Message }}
+                                </div>
+                                <div class="time">{{t.createdAt|date('d/m/Y')}} <br>
+                                    <a  href="/contact/remove/{{ t.id }}">  remove </a>
+
+                                </div>
+                            </div>
+                            {% else %}
+
+
+
+                            <div class="answer left">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                                    <div class="status online"></div>
+                                </div>
+                                <div class="name">  {{ t.RecieverId }}
+                                    </div>
+                                <div class="text">
+                                {{ t.Message }}
+                                </div>
+                                <div class="time">{{t.createdAt|date('d/m/Y')}}</div>
+                            </div>
+                            {%endif%}
+                            {% endfor %}
+
+
+                            <div class="answer-add">
+                                {{ form_start(formContact,{'attr': {'novalidate': 'novalidate'}}) }}
+                                {{ form_widget(formContact) }}
+                                {{ form_end(formContact) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

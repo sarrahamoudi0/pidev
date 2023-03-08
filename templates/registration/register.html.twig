@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Register    
+                    
+                
+            
+        
+    
+{% endblock %}
+
+{% block body %}
+    <div class="inner-banner"></div>
+    <section class='container'>
+        <div class='row'>
+
+            {{ form_start(registrationForm,
+            {
+                'attr' : {
+                    'novalidate' : 'novalidate'
+                }
+            }
+            ) }}
+            {{ form_row(registrationForm.firstname) }}
+            {{ form_row(registrationForm.lastname) }}
+            {{ form_row(registrationForm.address) }}
+            {{ form_row(registrationForm.type
+            ) }}
+            {{ form_row(registrationForm.email,
+            {
+                value: member.email ? member.email : '',
+                disabled : member.email ? true : false,
+                label: 'Email',
+             
+            }
+            ) }}
+            {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-lg btn-primary m-2">
+                Register
+                                                                                            
+                                                                            
+                                                            
+                                            
+                            
+            </button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
+{% endblock %}

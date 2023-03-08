@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projects {% endblock %}
+
+{% block body %}
+    <div class="inner-banner">
+    </div>
+
+    <div class="w3-services py-5">
+    <div class="container py-lg-4">
+    {% if is_granted('ROLE_ORGANIZATION') %}
+        <a href="project/add" class="btn btn-style btn-primary mt-4">Create New Project</a>
+    {% endif %}
+
+    <div class="row w3-services-grids">
+            {% for t in projects %}
+        <div class="col-lg-4 col-md-6 causes-grid">
+            <div class="causes-grid-info">
+                <a href="/project/{{ t.id }}"><img src="{{ asset('assets/img/'~t.image) }}" class="img-fluid" style="width: 497px; height: 296px;"></a>
+                <a href="#" class="cause-title-wrap">
+                    <h4 class="cause-title">{{ t.name }}
+                    </h4>
+                </a>
+
+                <p class="card-text mb-0">{{ t.description|slice(0, 180) ~ ' ...'}}
+                </p>
+
+                <a href="/project/{{ t.id }}" class="btn btn-style btn-primary mt-4">Read More</a>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

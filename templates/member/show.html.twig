@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Member{% endblock %}
+
+{% block body %}
+<div class='inner-banner'></div>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Username</th>
+                <td>{{ member.username }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ member.Department }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ member.position }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ member.createdAt ? member.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ member.updatedAt ? member.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ member.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_member_edit', {'id': member.id}) }}"  class="btn btn-primary">Edit</a>
+{% endblock %}

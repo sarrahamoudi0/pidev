@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+    <div class="inner-banner"></div>
+<div class="container">
+    <h1>Blog</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ blog.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ blog.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ blog.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('images/' ~ blog.image) }}" alt="{{ blog.title }}" width="200"/></td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ blog.date ? blog.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blog_index') }}" class="btn btn-outline-info">back to list</a>
+
+    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}" class="btn btn-outline-warning">edit</a>
+
+    {{ include('blog/_delete_form.html.twig') }}
+</div>
+{% endblock %}

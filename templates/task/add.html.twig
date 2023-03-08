@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Add Task {% endblock %}
+{% block body %}
+   <div class="inner-banner">
+   </div>
+   <div class="w3-services py-5">
+   <div class="container py-lg-4">
+      {{ form_start(formTask,{'attr': {'novalidate': 'novalidate'}}) }}
+      {{ form_widget(formTask) }}
+      {{ form_end(formTask) }}
+   </div>
+   </div>
+{% endblock %}
